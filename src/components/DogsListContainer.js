@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import request from "superagent";
-import { Link } from "react-router-dom";
-// import DogBreedImages from "./DogBreedImages";
+import DogsList from "./DogList";
 
 export default class DogsListContainer extends Component {
   state = { dogBreeds: null };
@@ -19,20 +18,6 @@ export default class DogsListContainer extends Component {
   }
 
   render() {
-    return (
-      <div className="dogs-list">
-        <h1>Dogs List</h1>
-        {this.state.dogBreeds === null && "Loading..."}
-        {this.state.dogBreeds !== null && (
-          <ul>
-            {this.state.dogBreeds.map(breed => (
-              <li key={breed}>
-                <Link to={`/dog-breeds/${breed}`}>{breed}</Link>
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
-    );
+    return <DogsList dogBreeds={this.state.dogBreeds} />;
   }
 }
